@@ -1,0 +1,6 @@
+framework module Pods_scoop_ios_scoop_iosUITests {
+  umbrella header "Pods-scoop-ios-scoop-iosUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

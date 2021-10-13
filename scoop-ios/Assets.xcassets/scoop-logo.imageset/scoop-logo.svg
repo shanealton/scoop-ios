@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="75px" height="30px" viewBox="0 0 75 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Untitled</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="::Scoop-Logo::">
+            <text id="Scoop" font-family="Rajdhani-SemiBold, Rajdhani" font-size="24" font-weight="500" fill="#56AEEE">
+                <tspan x="12" y="22">Scoop</tspan>
+            </text>
+            <circle id="Oval" fill="#56AEEE" cx="73.25" cy="20.25" r="1.25"></circle>
+            <g id="Ice-Cream-Cone" transform="translate(0.000000, 5.000000)">
+                <polygon id="Path" fill="#C4A08B" points="1.5 7.5 7.5 7.5 4.5 15.5"></polygon>
+                <circle id="Oval-Copy-8" fill="#FDC7C7" cx="4.5" cy="4.5" r="4.5"></circle>
+                <path d="M4.5,0 C5.99774364,0 7.32458755,0.731708738 8.14256271,1.85715719 C7.40077803,1.31810513 6.48753773,1 5.5,1 C3.01471863,1 1,3.01471863 1,5.5 C1,6.48753773 1.31810513,7.40077803 1.85743729,8.14284281 C0.731708738,7.32458755 0,5.99774364 0,4.5 C0,2.01471863 2.01471863,0 4.5,0 Z" id="Combined-Shape" fill="#E5B3B3"></path>
+                <circle id="Oval" fill="#FDC7C7" cx="1" cy="7" r="1"></circle>
+                <circle id="Oval-Copy" fill="#FDC7C7" cx="2" cy="8" r="1"></circle>
+                <circle id="Oval-Copy-2" fill="#FDC7C7" cx="7" cy="8" r="1"></circle>
+                <path d="M5.5,11 C5.77614237,11 6,10.7761424 6,10.5 C6,10.2238576 5.77614237,9 5.5,9 C5.34395423,9 5.20460449,9.39081279 5.11291108,9.78057811 C5.02121766,10.1703434 5,10.3799034 5,10.5 C5,10.7761424 5.22385763,11 5.5,11 Z" id="Oval-Copy-10" fill="#FDC7C7"></path>
+                <circle id="Oval-Copy-4" fill="#FDC7C7" cx="8" cy="7" r="1"></circle>
+                <circle id="Oval-Copy-5" fill="#FDC7C7" cx="3" cy="9" r="1"></circle>
+                <circle id="Oval-Copy-3" fill="#FDC7C7" cx="4" cy="8" r="1"></circle>
+            </g>
+        </g>
+    </g>
+</svg>
