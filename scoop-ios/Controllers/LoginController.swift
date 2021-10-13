@@ -44,16 +44,22 @@ class LoginController: LBTAFormController {
     let params = ["emailAddress": email, "password": password]
     
     AF.request(url, method: .put, parameters: params, encoding:
-      URLEncoding())
-        .responseData{(dataResponse) in
-            hud.dismiss()
-            print("Finally sent request to server....")
+        URLEncoding())
+          .validate(statusCode: 200..<300)
+          .responseData{(dataResponse) in
+          hud.dismiss()
+                
+        if let _ = dataResponse.error {
+            self.errorLabel.isHidden = false
+            self.errorLabel.text = "Your credentials are incorrect. Please try again."
+            return
         }
     
-    self.dismiss(animated: true)
+        print("Finally sent request to server....")
+        self.dismiss(animated: true)
+    }
 }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .init(white: 0.95, alpha: 1)
