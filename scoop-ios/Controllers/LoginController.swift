@@ -25,8 +25,8 @@ class LoginController: LBTAFormController {
     lazy var goToRegisterButton = UIButton(title: "Need an account? Register here", titleColor: .black, font: .systemFont(ofSize: 16), target: self, action: (#selector(goToRegister)))
     
     @objc fileprivate func goToRegister() {
-        //let controller = RegisterController(alignment: .center)
-        //navigationController?.pushViewController(controller, animated: true)
+        let controller = RegisterController(alignment: .center)
+        navigationController?.pushViewController(controller, animated: true)
     }
 
 
