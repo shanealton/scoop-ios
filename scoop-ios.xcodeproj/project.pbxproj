@@ -22,6 +22,10 @@
 		C114EEDB2716094F008573A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C114EED82716094F008573A1 /* Main.storyboard */; };
 		C114EEDD27162B32008573A1 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C114EEDC27162B32008573A1 /* LoginController.swift */; };
 		C114EEDF27175C04008573A1 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C114EEDE27175C04008573A1 /* RegisterController.swift */; };
+		C1F47C292719CFB600153890 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F47C282719CFB600153890 /* Post.swift */; };
+		C1F47C2B2719D12700153890 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F47C2A2719D12700153890 /* Service.swift */; };
+		C1F47C2D271DD72000153890 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F47C2C271DD72000153890 /* PostCell.swift */; };
+		C1F47C2F271DDBE800153890 /* CreatePostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F47C2E271DDBE800153890 /* CreatePostController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +71,10 @@
 		C114EED82716094F008573A1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C114EEDC27162B32008573A1 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		C114EEDE27175C04008573A1 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		C1F47C282719CFB600153890 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		C1F47C2A2719D12700153890 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		C1F47C2C271DD72000153890 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		C1F47C2E271DDBE800153890 /* CreatePostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +191,7 @@
 				C114EED327160742008573A1 /* HomeController.swift */,
 				C114EEDC27162B32008573A1 /* LoginController.swift */,
 				C114EEDE27175C04008573A1 /* RegisterController.swift */,
+				C1F47C2E271DDBE800153890 /* CreatePostController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -190,6 +199,7 @@
 		C114EED527160749008573A1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C1F47C2C271DD72000153890 /* PostCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -197,6 +207,7 @@
 		C114EED62716074F008573A1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C1F47C282719CFB600153890 /* Post.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -204,6 +215,7 @@
 		C114EED727160755008573A1 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				C1F47C2A2719D12700153890 /* Service.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -449,10 +461,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C114EEDF27175C04008573A1 /* RegisterController.swift in Sources */,
+				C1F47C2B2719D12700153890 /* Service.swift in Sources */,
 				C114EED427160742008573A1 /* HomeController.swift in Sources */,
 				C114EEDD27162B32008573A1 /* LoginController.swift in Sources */,
+				C1F47C292719CFB600153890 /* Post.swift in Sources */,
+				C1F47C2F271DDBE800153890 /* CreatePostController.swift in Sources */,
 				C114EEA727160709008573A1 /* ViewController.swift in Sources */,
 				C114EEA327160709008573A1 /* AppDelegate.swift in Sources */,
+				C1F47C2D271DD72000153890 /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

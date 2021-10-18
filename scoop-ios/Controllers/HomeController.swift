@@ -8,26 +8,39 @@
 import LBTATools
 import WebKit
 import Alamofire
+import SDWebImage
 
-struct Post: Decodable {
-    let id: String
-    let text: String
-    let createdAt: Int
-    let user: User
-}
-
-struct User: Decodable {
-    let id: String
-    let name: String
-}
-
-class HomeController: UITableViewController {
+class HomeController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = .init(title: "Fetch Posts", style: .plain, target: self, action: #selector(fetchPosts))
+        navigationItem.rightBarButtonItems = [
+            .init(title: "Fetch Posts", style: .plain, target: self, action: #selector(fetchPosts)),
+            .init(title: "Create Post", style: .plain, target: self, action: #selector(createPost))
+        ]
         
         navigationItem.leftBarButtonItem = .init(title: "Login", style: .plain, target: self, action: #selector(handleLogin))
+    }
+    
+    @objc fileprivate func createPost() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        present(imagePicker, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let image = info[.originalImage] as? UIImage else { return }
+        
+        dismiss(animated: true) {
+            let createPostController = CreatePostController(selectedImage: image)
+            createPostController.homeController = self
+            self.present(createPostController, animated: true)
+        }
+     }
+    
+    func imagePickerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
     }
     
     @objc fileprivate func handleLogin() {
@@ -36,25 +49,16 @@ class HomeController: UITableViewController {
         present(navController, animated: true)
     }
     
-    @objc fileprivate func fetchPosts() {
-        let url = "http://localhost:1337/post"
-        AF.request(url)
-            .validate(statusCode: 200..<300)
-            .responseData{ (dataResp) in
-                if let err = dataResp.error {
-                    print("Failed to fetch posts:", err)
-                    return
-                }
-                
-                guard let data = dataResp.data else { return }
-                do {
-                    let posts = try JSONDecoder().decode([Post].self, from: data)
-                    self.posts = posts
-                    self.tableView.reloadData()
-                } catch {
-                    print(error)
-                }
+    @objc func fetchPosts() {
+        Service.shared.fetchPosts {(res) in
+            switch res {
+            case .failure(let err):
+                print("Failed to fetch posts:", err)
+            case .success(let posts):
+                self.posts = posts
+                self.tableView.reloadData()
             }
+        }
     }
     
     var posts = [Post]()
@@ -64,12 +68,13 @@ class HomeController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        let cell = PostCell(style: .subtitle, reuseIdentifier: nil)
         let post = posts[indexPath.row]
-        cell.textLabel?.text = post.user.name
-        cell.textLabel?.font = .boldSystemFont(ofSize: 14)
-        cell.detailTextLabel?.text = post.text
-        cell.detailTextLabel?.numberOfLines = 0
+        
+        cell.usernameLabel.text = post.user.name
+        cell.postTextLabel.text = post.text
+        cell.postImageView.sd_setImage(with: URL(string: post.imageUrl))
+            
         return cell
     }
 }

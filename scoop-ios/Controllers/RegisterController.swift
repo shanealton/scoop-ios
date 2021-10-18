@@ -43,23 +43,18 @@ class RegisterController: LBTAFormController {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         
-        let url = "http://localhost:1337/api/v1/entrance/signup"
-        let params = ["fullName": fullName, "emailAddress": email, "password": password]
-        
-        AF.request(url, method: .post, parameters: params)
-            .validate(statusCode: 200..<300)
-            .responseData { (dataResp) in
-                hud.dismiss()
-                
-                if let err = dataResp.error {
-                    print("Failed to sign up:", err)
-                    self.errorLabel.isHidden = false
-                    return
-                }
-                
-                print("Successfully signed up.")
+        Service.shared.signUp(fullName: fullName, emailAddress: email, password: password) { (res) in
+            hud.dismiss(animated: true)
+            
+            switch res {
+            case .failure(let err):
+                print("Failed to sign up:", err)
+                self.errorLabel.isHidden = false
+            case .success:
+                print("Successfully signed up")
                 self.dismiss(animated: true)
             }
+        }
     }
     
     override func viewDidLoad() {

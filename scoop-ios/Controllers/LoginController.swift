@@ -31,33 +31,26 @@ class LoginController: LBTAFormController {
 
 
     @objc fileprivate func handleLogin() {
-    let hud = JGProgressHUD(style: .dark)
-    hud.textLabel.text = "Logging in"
-    hud.show(in: view)
-    
-    guard let email = emailTextField.text else { return }
-    guard let password = passwordTextField.text else { return }
-    
-    errorLabel.isHidden = true
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Logging in"
+        hud.show(in: view)
         
-    let url = "http://localhost:1337/api/v1/entrance/login"
-    let params = ["emailAddress": email, "password": password]
-    
-    AF.request(url, method: .put, parameters: params, encoding:
-        URLEncoding())
-          .validate(statusCode: 200..<300)
-          .responseData{(dataResponse) in
-          hud.dismiss()
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        errorLabel.isHidden = true
+            
+        Service.shared.login(email: email, password: password) { (res) in
+            hud.dismiss()
                 
-        if let _ = dataResponse.error {
-            self.errorLabel.isHidden = false
-            self.errorLabel.text = "Your credentials are incorrect. Please try again."
-            return
+            switch res {
+            case .failure:
+                self.errorLabel.isHidden = false
+                self.errorLabel.text = "Your credentials are not correct, please try again."
+            case .success:
+                self.dismiss(animated: true)
+            }
         }
-    
-        print("Finally sent request to server....")
-        self.dismiss(animated: true)
-    }
 }
     
     override func viewDidLoad() {
